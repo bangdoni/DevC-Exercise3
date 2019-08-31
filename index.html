@@ -8,8 +8,13 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <input class="form-control col-md-5 form-inline" id="filter" type="text" placeholder="filter here" />
-                    <button class="btn btn-primary col-md-2 form-inline" id="button" onclick="myFilter()">Filter</button>
+                    <center>
+                        <h1>Final Project</h1>
+                    </center>
+                    <div class="input-group">
+                        <input class="form-control col-md-10 form-inline" id="filter" type="text" placeholder="filter here" />
+                        <button class="btn btn-primary ml-2 col-md-2 form-inline" id="button" onclick="myFilter()">Filter</button>
+                    </div>
                     <table class="table table-striped">
                         <thead>
                             <tr>
@@ -17,7 +22,6 @@
                                 <th>Rotation Period</th>
                                 <th>Orbital Period</th>
                                 <th>Diameter</th>
-                                
                             </tr>
                         </thead>
                         <tbody id="tbody">
@@ -45,9 +49,8 @@
                 const { results } = data
                 
                 for (var i = 0;i < results.length; i++){
-                    const { name, rotation_periode, orbital_periode, diameter } = results[i]
+                    const { name, rotation_period, orbital_period, diameter } = results[i]
                     if(name == filter){
-                        // getId('tbody').style.display = 'none'
                         
                         document.querySelector('tbody').textContent = null
                         var tr = createNode('tr')
@@ -55,7 +58,7 @@
                         tbody.appendChild(tr)
                         for(var y = 0; y < 4; y++){
                             var abc = getId(i)
-                            const key = [name, rotation_periode, orbital_periode, diameter]
+                            const key = [name, rotation_period, orbital_period, diameter]
                             var td = createNode('td')
                             var textnode = document.createTextNode(key[y])
                             td.appendChild(textnode)
@@ -93,16 +96,16 @@
             })
             .then(function(data){
                 console.log(data.results)
-                // var resultJSON = data.results
+                
                 const { results } = data
                 for (var i = 0;i < results.length; i++){
-                    const { name, rotation_periode, orbital_periode, diameter } = results[i]
+                    const { name, rotation_period, orbital_period, diameter } = results[i]
                     var tr = createNode('tr')
                     tr.setAttribute('id', i)
                     tbody.appendChild(tr)
                     for(var y = 0; y < 4; y++){
                         var abc = getId(i)
-                        const key = [name, rotation_periode, orbital_periode, diameter]
+                        const key = [name, rotation_period, orbital_period, diameter]
                         var td = createNode('td')
                         var textnode = document.createTextNode(key[y])
                         td.appendChild(textnode)
